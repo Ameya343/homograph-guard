@@ -12,6 +12,9 @@ web pages and chat exports, a Windows installer, and a [browser extension](#brow
 for Chrome, Edge, Brave and Firefox that checks the links in the email, chat or
 page you are reading. Windows, macOS and Linux are supported.
 
+**Get it:** [Windows installer](https://github.com/Ameya343/homograph-guard/releases/latest) ·
+`pip install "git+https://github.com/Ameya343/homograph-guard.git"` · [all download options](#download)
+
 ![Homograph Guard flagging pаypal.com, whose second letter is Cyrillic U+0430](docs/gui.png)
 
 ## What it catches
@@ -168,6 +171,27 @@ a TLS-inspecting proxy recorded every request the app made; see
 
 ## Install
 
+### Download
+
+| What | Where to get it | For |
+| --- | --- | --- |
+| Windows installer | [Releases](https://github.com/Ameya343/homograph-guard/releases/latest): `HomographGuard-Setup-1.3.0.exe` and `HomographGuard-Setup-1.3.0.exe.sha256` | 64-bit Windows 10 or 11; no Python needed |
+| Python package | `pip install "git+https://github.com/Ameya343/homograph-guard.git"` (needs Git), or without Git `pip install https://github.com/Ameya343/homograph-guard/archive/refs/heads/main.zip`, or the `.whl` file from [Releases](https://github.com/Ameya343/homograph-guard/releases/latest) | Windows, macOS and Linux with Python 3.11 or newer |
+| Source code, with the browser extension | `git clone https://github.com/Ameya343/homograph-guard.git`, or **Code → Download ZIP** at the top of this page | the extension without the installer, Docker, building it yourself |
+
+Before running the installer, check that it is the file that was published. The two
+values must be the same:
+
+```powershell
+(Get-FileHash .\HomographGuard-Setup-1.3.0.exe -Algorithm SHA256).Hash.ToLower()
+Get-Content .\HomographGuard-Setup-1.3.0.exe.sha256
+```
+
+The installer is not code-signed, so the first time Windows SmartScreen may show
+*Windows protected your PC*. Choose **More info → Run anyway** only if the values match.
+The browser extension comes with the installer (in its folder) and with the source code
+(the `extension` folder); see [Browser extension](#browser-extension) to add it to your browser.
+
 ### Windows installer
 
 `HomographGuard-Setup-1.3.0.exe` installs for the current user (no administrator
@@ -201,7 +225,7 @@ Python 3.11 or newer:
 
 ```bash
 python3 -m venv ~/.homograph-guard && . ~/.homograph-guard/bin/activate   # Windows: .venv\Scripts\activate
-pip install homograph-guard-*.whl            # or, from a checkout: pip install .
+pip install "git+https://github.com/Ameya343/homograph-guard.git"   # or a downloaded .whl, or `pip install .` in the source folder
 homograph-guard update                       # download the threat database
 homograph-guard setup schedule install       # refresh it every day
 homograph-guard native-host install          # connect the browser extension to the app
