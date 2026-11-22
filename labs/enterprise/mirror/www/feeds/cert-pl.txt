@@ -1,0 +1,3 @@
+# cert-pl, as published inside the company
+mirror-listed-cert-pl.com
+shared-bad-domain-mirror.com

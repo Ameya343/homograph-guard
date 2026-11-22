@@ -1,0 +1,90 @@
+:root {
+  --bg: #ffffff;
+  --fg: #17212b;
+  --muted: #56626f;
+  --rule: #e3e8ee;
+  --track-off: #c3cad3;
+  --track-on: #2453d4;
+  --knob: #ffffff;
+  --risk: #b42318;
+  --ok: #1f7a4d;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b2129;
+    --fg: #e8edf2;
+    --muted: #a2adb9;
+    --rule: #2f3a46;
+    --track-off: #4a5562;
+    --track-on: #6d8fff;
+    --knob: #f5f7fa;
+    --risk: #ff8a7a;
+    --ok: #5fd39a;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--fg); }
+body { width: 300px; font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { padding: 14px 16px 16px; }
+header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+h1 { font-size: 15px; font-weight: 650; margin: 0; }
+#logo { transition: filter 0.25s ease; }
+body.off #logo { filter: grayscale(1) opacity(0.6); }
+
+.switch-row {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.switch-row:focus-visible { outline: 2px solid var(--track-on); outline-offset: 2px; }
+.text { display: flex; flex-direction: column; }
+.label { font-weight: 600; font-size: 14px; }
+.state { color: var(--muted); font-size: 12px; }
+
+/* The slide switch: the knob slides across while the track fills with colour. */
+.track {
+  position: relative;
+  flex: none;
+  width: 46px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--track-off);
+  transition: background-color 0.28s ease;
+}
+.knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--knob);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.32s cubic-bezier(0.34, 1.4, 0.64, 1), width 0.18s ease;
+}
+.switch-row:active .knob { width: 24px; }
+.switch-row[aria-checked="true"] .track { background: var(--track-on); }
+.switch-row[aria-checked="true"] .knob { transform: translateX(20px); }
+.switch-row[aria-checked="true"]:active .knob { transform: translateX(16px); }
+
+.status { margin: 12px 2px 0; color: var(--muted); min-height: 2.9em; }
+.settings { display: inline-block; margin: 6px 2px 0; color: var(--muted); font-size: 12px; text-underline-offset: 2px; }
+.settings:hover, .settings:focus-visible { color: var(--fg); }
+.status.risk { color: var(--risk); font-weight: 600; }
+.status.ok { color: var(--ok); }
+
+/* No slide when the popup first opens - only when the user flips the switch. */
+body.init .track, body.init .knob, body.init #logo { transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .track, .knob, #logo { transition: none; }
+}

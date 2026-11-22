@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "Homograph Guard",
+  "version": "1.3.0",
+  "description": "Flags phishing links in the email, chat or page you are reading, using a threat database and your own lists on this device.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsBT9smGAis6ZBFg4kxMwOjSl9SdK5ITC3vndzacsjE7wnHTld+8BWzrEH+wogh6voAD8afh5Jm9WqUbjf7A07soMs1HlDGIQpJmKA5xy3uLzl3aSNMLYLh31N3glvp3ljg9qDFrUUgbt1ybrLfUubUUqXneWOKL6YvuDthUwmV3GKwU/87WF+C5L4PH6qiXVKtxU/VBfZLprpuUcPI7ouiLwTSOFE1YaERx9Yarx88G9sNp13cumUYE3OyZenFuhf51MuhdPZznFGhX2eSkKD5mapfLfkP9EpWxGN92pjqSzx145f+lhGMPjpBy3aRveGLB6MQt2s6PlvPy1l5JoCwIDAQAB",
+  "minimum_chrome_version": "121",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{b8a89689-dc16-48f4-936e-100f254404d8}",
+      "strict_min_version": "128.0"
+    }
+  },
+  "icons": {
+    "16": "icons/on-16.png",
+    "32": "icons/on-32.png",
+    "48": "icons/on-48.png",
+    "128": "icons/on-128.png"
+  },
+  "action": {
+    "default_title": "Homograph Guard",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/on-16.png",
+      "32": "icons/on-32.png",
+      "48": "icons/on-48.png",
+      "128": "icons/on-128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+  "permissions": ["storage", "nativeMessaging", "contextMenus", "webNavigation", "webRequest",
+    "declarativeNetRequestWithHostAccess"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "https://dns.google/*",
+    "https://cloudflare-dns.com/*",
+    "https://security.cloudflare-dns.com/*",
+    "https://dns.adguard-dns.com/*",
+    "https://unfiltered.adguard-dns.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; connect-src https://dns.google https://cloudflare-dns.com https://security.cloudflare-dns.com https://dns.adguard-dns.com https://unfiltered.adguard-dns.com"
+  }
+}

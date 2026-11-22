@@ -1,0 +1,135 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12", "3.13", "3.14", "3.15"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install --require-hashes --only-binary=:all: --no-deps -r requirements.lock
+          pip install -r requirements-dev.txt
+          pip install --no-deps -e .
+      - name: Virtual display for the GUI test
+        run: sudo apt-get update && sudo apt-get install -y xvfb
+      - name: Tests (includes the local DNS lab over UDP, TCP, DoT and DoH)
+        run: xvfb-run -a python -m pytest -q
+      - name: Lint and static security checks
+        run: |
+          ruff check src tests scripts extension/tests packaging
+          bandit -q -r src -c pyproject.toml
+
+  platforms:
+    name: tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.15"
+      - name: Install
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          pip install --require-hashes --only-binary=:all: --no-deps -r requirements.lock
+          pip install -r requirements-dev.txt
+          pip install --no-deps -e .
+      - name: Tests (data folders, browser registration and the daily schedule for this OS)
+        run: python -m pytest -q
+
+  extension:
+    name: extension (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.15"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install
+        run: |
+          pip install --require-hashes --only-binary=:all: --no-deps -r requirements.lock
+          pip install --no-deps -e .
+      - name: Extension data is generated from the Python package
+        run: python scripts/build_extension_data.py --check
+      - name: JavaScript tests (same vectors as the Python tests)
+        run: node --test "extension/tests/*.test.mjs"
+      - name: End-to-end in Chromium (Gmail, Discord, WhatsApp, a web page, the popup)
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+          python extension/tests/e2e.py e2e-shots/browser
+      - name: End-to-end through the app on the device (native messaging)
+        run: HG_NATIVE=1 python extension/tests/e2e.py e2e-shots/native
+      - name: Sites keep working (drafts untouched, site handlers, strict CSP, 5,000 links, clean pages unchanged)
+        run: python extension/tests/compat.py e2e-shots/compat
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: extension-screenshots-${{ matrix.os }}
+          path: e2e-shots
+
+  install:
+    name: install (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.15"
+      - name: Install the wheel into a fresh venv and run the installed commands
+        shell: bash
+        run: bash scripts/check-install.sh
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the hardened image
+        run: docker build -t homograph-guard:ci .
+      - name: Offline check inside the locked-down container
+        run: |
+          set +e
+          HGUARD_IMAGE=homograph-guard:ci sandbox/run.sh --no-dns --json "https://xn--80ak6aa92e.com" > out.json
+          code=$?
+          set -e
+          cat out.json
+          test "$code" -eq 4
+          grep -q '"verdict": "high_risk"' out.json
+      - name: The container cannot write to its filesystem
+        run: |
+          if docker run --rm --read-only --entrypoint python homograph-guard:ci -c "open('/app/x','w')"; then
+            echo "write unexpectedly succeeded"; exit 1
+          fi

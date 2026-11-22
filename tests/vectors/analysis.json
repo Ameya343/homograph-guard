@@ -1,0 +1,684 @@
+[
+ {
+  "input": "https://p\u0430ypal.com/login",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 100,
+  "codes": [
+   "BRAND_HOMOGRAPH",
+   "HG_MIXED_SCRIPT",
+   "IDN_PUNYCODE",
+   "URL_LURE_WORDS"
+  ],
+  "host_ascii": "xn--pypal-4ve.com"
+ },
+ {
+  "input": "https://xn--80ak6aa92e.com",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 90,
+  "codes": [
+   "BRAND_HOMOGRAPH",
+   "HG_WHOLE_SCRIPT",
+   "IDN_PUNYCODE"
+  ],
+  "host_ascii": "xn--80ak6aa92e.com"
+ },
+ {
+  "input": "https://xn--pypal-4ve.com",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 95,
+  "codes": [
+   "BRAND_HOMOGRAPH",
+   "HG_MIXED_SCRIPT",
+   "IDN_PUNYCODE"
+  ],
+  "host_ascii": "xn--pypal-4ve.com"
+ },
+ {
+  "input": "https://\u0261oogle.com",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 70,
+  "codes": [
+   "BRAND_HOMOGRAPH",
+   "HG_LATIN_LOOKALIKE",
+   "IDN_PUNYCODE"
+  ],
+  "host_ascii": "xn--oogle-qmc.com"
+ },
+ {
+  "input": "https://facebo\u00f6k.com",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 45,
+  "codes": [
+   "BRAND_LOOKALIKE",
+   "IDN_PUNYCODE"
+  ],
+  "host_ascii": "xn--facebok-f1a.com"
+ },
+ {
+  "input": "https://paypa1.com",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "BRAND_LOOKALIKE"
+  ],
+  "host_ascii": "paypa1.com"
+ },
+ {
+  "input": "https://rnicrosoft.com",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "BRAND_LOOKALIKE"
+  ],
+  "host_ascii": "rnicrosoft.com"
+ },
+ {
+  "input": "https://paypall.com",
+  "context": null,
+  "verdict": "caution",
+  "score": 25,
+  "codes": [
+   "BRAND_TYPOSQUAT"
+  ],
+  "host_ascii": "paypall.com"
+ },
+ {
+  "input": "https://paypal.com.account-verify.info/login",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 50,
+  "codes": [
+   "BRAND_SUBDOMAIN_SPOOF",
+   "URL_LURE_WORDS"
+  ],
+  "host_ascii": "paypal.com.account-verify.info"
+ },
+ {
+  "input": "https://sbi-kyc-update.in",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "BRAND_EMBEDDED",
+   "URL_LURE_WORDS"
+  ],
+  "host_ascii": "sbi-kyc-update.in"
+ },
+ {
+  "input": "https://www.paypal.com@evil.example",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 70,
+  "codes": [
+   "URL_USERINFO_BRAND",
+   "URL_USERINFO_DECEPTION"
+  ],
+  "host_ascii": "evil.example"
+ },
+ {
+  "input": "http://evil.com\\@google.com",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 70,
+  "codes": [
+   "URL_BACKSLASH",
+   "URL_PARSER_CONFUSION",
+   "URL_PARSER_CONFUSION_BRAND"
+  ],
+  "host_ascii": "evil.com"
+ },
+ {
+  "input": "http://%67oogle.com",
+  "context": null,
+  "verdict": "caution",
+  "score": 25,
+  "codes": [
+   "BRAND_OFFICIAL",
+   "URL_PERCENT_HOST"
+  ],
+  "host_ascii": "google.com"
+ },
+ {
+  "input": "https://\uff47\uff4f\uff4f\uff47\uff4c\uff45\uff0ecom",
+  "context": null,
+  "verdict": "caution",
+  "score": 25,
+  "codes": [
+   "BRAND_OFFICIAL",
+   "IDN_NORMALIZED"
+  ],
+  "host_ascii": "google.com"
+ },
+ {
+  "input": "http://0x7f.1",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 75,
+  "codes": [
+   "URL_INTERNAL_IP",
+   "URL_IP_HOST",
+   "URL_OBFUSCATED_IP"
+  ],
+  "host_ascii": "127.0.0.1"
+ },
+ {
+  "input": "http://3232235777",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 75,
+  "codes": [
+   "URL_INTERNAL_IP",
+   "URL_IP_HOST",
+   "URL_OBFUSCATED_IP"
+  ],
+  "host_ascii": "192.168.1.1"
+ },
+ {
+  "input": "http://192.168.1.1/admin",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "URL_INTERNAL_IP",
+   "URL_IP_HOST"
+  ],
+  "host_ascii": "192.168.1.1"
+ },
+ {
+  "input": "https://[::1]/",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "URL_INTERNAL_IP",
+   "URL_IP_HOST"
+  ],
+  "host_ascii": "::1"
+ },
+ {
+  "input": "javascript:alert(1)",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 70,
+  "codes": [
+   "URL_DANGEROUS_SCHEME"
+  ],
+  "host_ascii": null
+ },
+ {
+  "input": "ms-msdt:/id PCWDiagnostic /skip force",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 45,
+  "codes": [
+   "URL_APP_HANDLER"
+  ],
+  "host_ascii": null
+ },
+ {
+  "input": "file://attacker.example/share/doc.lnk",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 45,
+  "codes": [
+   "URL_REMOTE_FILE"
+  ],
+  "host_ascii": "attacker.example"
+ },
+ {
+  "input": "PayPal <service@paypa1.com>",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 60,
+  "codes": [
+   "BRAND_LOOKALIKE",
+   "EMAIL_DISPLAY_NAME_BRAND"
+  ],
+  "host_ascii": "paypa1.com"
+ },
+ {
+  "input": "service@paypal.com <x@mail-paypal.net>",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 75,
+  "codes": [
+   "BRAND_EMBEDDED",
+   "EMAIL_DISPLAY_NAME_BRAND",
+   "EMAIL_DISPLAY_NAME_DOMAIN"
+  ],
+  "host_ascii": "mail-paypal.net"
+ },
+ {
+  "input": "hxxps://evil[.]com/login",
+  "context": null,
+  "verdict": "no_indicators",
+  "score": 0,
+  "codes": [
+   "INPUT_DEFANGED"
+  ],
+  "host_ascii": "evil.com"
+ },
+ {
+  "input": "https://pay\u200bpal.com",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 55,
+  "codes": [
+   "BRAND_OFFICIAL",
+   "IDN_NORMALIZED",
+   "URL_INVISIBLE"
+  ],
+  "host_ascii": "paypal.com"
+ },
+ {
+  "input": "https://example.com/\u202eexe.pdf",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "URL_BIDI"
+  ],
+  "host_ascii": "example.com"
+ },
+ {
+  "input": "https://accounts.google.com\u2215login.evil.example",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 100,
+  "codes": [
+   "BRAND_SUBDOMAIN_SPOOF",
+   "IDN_FAKE_SLASH",
+   "IDN_INVALID",
+   "IDN_PUNYCODE",
+   "URL_LURE_WORDS"
+  ],
+  "host_ascii": "accounts.google.xn--comlogin-0f7d.evil.example"
+ },
+ {
+  "input": "https://google.com",
+  "context": null,
+  "verdict": "no_indicators",
+  "score": 0,
+  "codes": [
+   "BRAND_OFFICIAL"
+  ],
+  "host_ascii": "google.com"
+ },
+ {
+  "input": "https://www.paypal.com/signin",
+  "context": null,
+  "verdict": "no_indicators",
+  "score": 0,
+  "codes": [
+   "BRAND_OFFICIAL"
+  ],
+  "host_ascii": "www.paypal.com"
+ },
+ {
+  "input": "https://my-site.github.io/paypal/login",
+  "context": null,
+  "verdict": "caution",
+  "score": 20,
+  "codes": [
+   "URL_FREE_HOSTING",
+   "URL_PATH_BRAND"
+  ],
+  "host_ascii": "my-site.github.io"
+ },
+ {
+  "input": "https://bit.ly/abc",
+  "context": null,
+  "verdict": "caution",
+  "score": 15,
+  "codes": [
+   "URL_SHORTENER"
+  ],
+  "host_ascii": "bit.ly"
+ },
+ {
+  "input": "https://login-secure-verify.top/",
+  "context": null,
+  "verdict": "caution",
+  "score": 15,
+  "codes": [
+   "URL_ABUSED_TLD",
+   "URL_LURE_WORDS"
+  ],
+  "host_ascii": "login-secure-verify.top"
+ },
+ {
+  "input": "https://\u0430\u0440\u0440\u04cf\u0435.\u0440\u0444",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 50,
+  "codes": [
+   "BRAND_LOOKALIKE",
+   "HG_WHOLE_SCRIPT",
+   "IDN_PUNYCODE"
+  ],
+  "host_ascii": "xn--80ak6aa92e.xn--p1ai"
+ },
+ {
+  "input": "https://example.com:8443/x",
+  "context": null,
+  "verdict": "no_indicators",
+  "score": 5,
+  "codes": [
+   "URL_ODD_PORT"
+  ],
+  "host_ascii": "example.com"
+ },
+ {
+  "input": "https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fp%D0%B0ypal.com%2Flogin&data=05",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 100,
+  "codes": [
+   "BRAND_HOMOGRAPH",
+   "HG_MIXED_SCRIPT",
+   "IDN_PUNYCODE",
+   "URL_LURE_WORDS",
+   "WRAP_GATEWAY"
+  ],
+  "host_ascii": "xn--pypal-4ve.com"
+ },
+ {
+  "input": "https://paypa1-login.example/fmlurlsvc/?url=https%3A%2F%2Fwww.paypal.com%2F",
+  "context": null,
+  "verdict": "high_risk",
+  "score": 70,
+  "codes": [
+   "BRAND_EMBEDDED",
+   "BRAND_OFFICIAL",
+   "URL_LURE_WORDS",
+   "URL_PATH_BRAND",
+   "WRAP_UNVERIFIED"
+  ],
+  "host_ascii": "www.paypal.com"
+ },
+ {
+  "input": "https://protect-eu.mimecast.com/s/AbCdEfGhIjKl?domain=micr0soft-support.com",
+  "context": null,
+  "verdict": "caution",
+  "score": 20,
+  "codes": [
+   "BRAND_EMBEDDED",
+   "WRAP_DOMAIN_ONLY",
+   "WRAP_GATEWAY"
+  ],
+  "host_ascii": "micr0soft-support.com"
+ },
+ {
+  "input": "https://news.example.org/out?url=https%3A%2F%2Fpaypal-secure-login.top%2F",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 65,
+  "codes": [
+   "BRAND_EMBEDDED",
+   "URL_ABUSED_TLD",
+   "URL_EMBEDDED_URL",
+   "URL_LURE_WORDS",
+   "URL_PATH_BRAND"
+  ],
+  "host_ascii": "news.example.org"
+ },
+ {
+  "input": "https://abcdefgh.r.us-east-1.awstrack.me/L0/https:%2F%2Fwww.amaz0n-billing.com%2Faccount/1/x",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "BRAND_EMBEDDED",
+   "BRAND_EMBEDDED",
+   "BRAND_EMBEDDED",
+   "URL_LURE_WORDS",
+   "WRAP_TRACKING"
+  ],
+  "host_ascii": "www.amaz0n-billing.com"
+ },
+ {
+  "input": "https://www.google.com/url?q=https://paypa1.com/&sa=D",
+  "context": null,
+  "verdict": "suspicious",
+  "score": 50,
+  "codes": [
+   "BRAND_LOOKALIKE",
+   "WRAP_REDIRECT"
+  ],
+  "host_ascii": "paypa1.com"
+ },
+ {
+  "input": "https://paypa1.com/login",
+  "context": {
+   "source": "anchor",
+   "text": "https://www.paypal.com/signin",
+   "where": "HTML body"
+  },
+  "verdict": "high_risk",
+  "score": 100,
+  "codes": [
+   "BRAND_LOOKALIKE",
+   "LINK_TEXT_MISMATCH",
+   "URL_LURE_WORDS"
+  ],
+  "host_ascii": "paypa1.com"
+ },
+ {
+  "input": "https://example.net/",
+  "context": {
+   "source": "anchor",
+   "text": "Read invoice.pdf",
+   "where": "HTML body"
+  },
+  "verdict": "no_indicators",
+  "score": 0,
+  "codes": [],
+  "host_ascii": "example.net"
+ },
+ {
+  "input": "https://example.net/t",
+  "context": {
+   "source": "anchor",
+   "text": ".",
+   "hidden": "display:none",
+   "where": "HTML body"
+  },
+  "verdict": "no_indicators",
+  "score": 10,
+  "codes": [
+   "LINK_HIDDEN"
+  ],
+  "host_ascii": "example.net"
+ },
+ {
+  "input": "https://example.net/",
+  "context": {
+   "source": "anchor",
+   "text": "support.example.net"
+  },
+  "verdict": "no_indicators",
+  "score": 0,
+  "codes": [],
+  "host_ascii": "example.net"
+ },
+ {
+  "input": "mailto:help@paypa1.com",
+  "context": {
+   "source": "anchor",
+   "text": "help@paypal.com"
+  },
+  "verdict": "high_risk",
+  "score": 80,
+  "codes": [
+   "BRAND_LOOKALIKE",
+   "LINK_TEXT_MISMATCH"
+  ],
+  "host_ascii": "paypa1.com"
+ },
+ {
+  "input": "https://www.githubstatus.com/incidents/x",
+  "context": {
+   "source": "anchor",
+   "text": "Elevated errors on GitHub.com"
+  },
+  "verdict": "no_indicators",
+  "score": 8,
+  "codes": [
+   "BRAND_EMBEDDED"
+  ],
+  "host_ascii": "www.githubstatus.com"
+ },
+ {
+  "input": "https://example-shop.com/",
+  "context": {
+   "source": "anchor",
+   "text": "https://example-shop.in/"
+  },
+  "verdict": "no_indicators",
+  "score": 10,
+  "codes": [
+   "LINK_TEXT_MISMATCH"
+  ],
+  "host_ascii": "example-shop.com"
+ },
+ {
+  "input": "https://status.cloud.microsoft/",
+  "context": null,
+  "verdict": "no_indicators",
+  "score": 0,
+  "codes": [
+   "BRAND_OWNED_TLD"
+  ],
+  "host_ascii": "status.cloud.microsoft"
+ },
+ {
+  "input": "https://github.blog/changelog/",
+  "context": {
+   "source": "anchor",
+   "text": "Changelog",
+   "hidden": "display:none",
+   "medium": "page"
+  },
+  "verdict": "caution",
+  "score": 15,
+  "codes": [
+   "BRAND_TLD_SWAP",
+   "LINK_HIDDEN"
+  ],
+  "host_ascii": "github.blog"
+ },
+ {
+  "input": "https://evil.example/",
+  "context": {
+   "source": "anchor",
+   "text": "https://www.paypal.com/signin to keep your account"
+  },
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "LINK_TEXT_MISMATCH"
+  ],
+  "host_ascii": "evil.example"
+ },
+ {
+  "input": "https://evil.example/",
+  "context": {
+   "source": "anchor",
+   "text": "\u201cPayPal.com\u201d"
+  },
+  "verdict": "suspicious",
+  "score": 40,
+  "codes": [
+   "LINK_TEXT_MISMATCH"
+  ],
+  "host_ascii": "evil.example"
+ },
+ {
+  "input": "https://s.pemsrv.com/v1/link.php?cat=&idzone=5974550&type=8&p=https%3A%2F%2Ftheblank.net%2F&sub=&block=1&el=&tags=&scr_info=aW5saW5lfHBvcE1hZ2ljfDEx&gdpr=0&cb=596590530&cookieconsent=true",
+  "context": null,
+  "verdict": "caution",
+  "score": 25,
+  "codes": [
+   "AD_REDIRECT"
+  ],
+  "host_ascii": "s.pemsrv.com"
+ },
+ {
+  "input": "https://serve.popads.net/s?cid=12",
+  "context": {
+   "source": "anchor",
+   "text": "Download",
+   "medium": "page"
+  },
+  "verdict": "caution",
+  "score": 25,
+  "codes": [
+   "AD_REDIRECT"
+  ],
+  "host_ascii": "serve.popads.net"
+ },
+ {
+  "input": "https://www.popads.net/",
+  "context": null,
+  "verdict": "no_indicators",
+  "score": 0,
+  "codes": [],
+  "host_ascii": "www.popads.net"
+ },
+ {
+  "input": "https://shorturl.at/zNYEi",
+  "context": null,
+  "verdict": "caution",
+  "score": 15,
+  "codes": [
+   "URL_SHORTENER"
+  ],
+  "host_ascii": "shorturl.at"
+ },
+ {
+  "input": "shorturl.at/zNYEi",
+  "context": null,
+  "verdict": "caution",
+  "score": 15,
+  "codes": [
+   "URL_SHORTENER"
+  ],
+  "host_ascii": "shorturl.at"
+ },
+ {
+  "input": "https://bit.ly/3abc",
+  "context": {
+   "source": "anchor",
+   "text": "https://bit.ly/3abc",
+   "medium": "email"
+  },
+  "verdict": "caution",
+  "score": 15,
+  "codes": [
+   "URL_SHORTENER"
+  ],
+  "host_ascii": "bit.ly"
+ },
+ {
+  "input": "https://bit.ly/3abc",
+  "context": {
+   "source": "anchor",
+   "text": "www.paypal.com",
+   "medium": "email"
+  },
+  "verdict": "suspicious",
+  "score": 55,
+  "codes": [
+   "LINK_TEXT_MISMATCH",
+   "URL_SHORTENER"
+  ],
+  "host_ascii": "bit.ly"
+ }
+]

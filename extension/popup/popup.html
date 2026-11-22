@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homograph Guard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="init">
+  <main>
+    <header>
+      <img src="../icons/on-32.png" width="24" height="24" alt="" id="logo">
+      <h1>Homograph Guard</h1>
+    </header>
+    <button id="toggle" class="switch-row" role="switch" aria-checked="false" aria-describedby="state">
+      <span class="text">
+        <span class="label">Protection</span>
+        <span class="state" id="state">Off</span>
+      </span>
+      <span class="track" aria-hidden="true"><span class="knob"></span></span>
+    </button>
+    <p id="status" class="status" aria-live="polite"></p>
+    <a id="settings" class="settings" href="#">Lists and privacy settings</a>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

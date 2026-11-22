@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dangerous site blocked - Homograph Guard</title>
+  <link rel="stylesheet" href="warning.css">
+</head>
+<body>
+  <main>
+    <img src="../icons/on-128.png" width="64" height="64" alt="">
+    <h1>This site looks like phishing</h1>
+    <p id="summary" class="lead"></p>
+    <p class="dest">You tried to open: <code id="dest"></code></p>
+    <ol id="reasons"></ol>
+    <p class="muted">Homograph Guard stopped the page before it loaded. It was checked against the threat database on this device and your own lists - nothing was sent anywhere.</p>
+    <div class="actions">
+      <button id="back" class="primary" type="button">Go back to safety</button>
+      <button id="continue" class="ghost" type="button">Continue anyway</button>
+      <button id="trust" class="link" type="button">I trust this site</button>
+    </div>
+  </main>
+  <script src="warning.js"></script>
+</body>
+</html>

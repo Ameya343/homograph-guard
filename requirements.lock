@@ -1,0 +1,8 @@
+# Runtime dependencies, pinned with hashes (used by the Dockerfile and CI).
+# Install with: pip install --require-hashes --only-binary=:all: --no-deps -r requirements.lock
+dnspython==2.9.2 \
+    --hash=sha256:af15f7d385a6ae2fb35a796fde2138004c8c42c7389090e2addc83e3b3340fd8
+idna==3.20 \
+    --hash=sha256:ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c
+publicsuffixlist==1.1.2.20261113 \
+    --hash=sha256:837494f6dcb18ccb90b104b1741b25688c07a0d34a05baa9062d74cefc0c0b6e

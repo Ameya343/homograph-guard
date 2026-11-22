@@ -1,0 +1,3 @@
+# phishing-army, as published inside the company
+mirror-listed-phishing-army.com
+shared-bad-domain-mirror.com

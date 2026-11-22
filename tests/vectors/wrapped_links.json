@@ -1,0 +1,192 @@
+[
+  {
+    "name": "Microsoft Safe Links around a Cyrillic homograph",
+    "input": "https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fp%D0%B0ypal.com%2Flogin&data=05%7C02%7C&sdata=abc&reserved=0",
+    "services": ["Microsoft Defender Safe Links"],
+    "destination": "https://pаypal.com/login",
+    "trusted": true
+  },
+  {
+    "name": "Microsoft Teams Safe Links",
+    "input": "https://statics.teams.cdn.office.net/evergreen-assets/safelinks/1/atp-safelinks.html?url=https%3A%2F%2Fexample.org%2Fdoc&locale=en-us",
+    "services": ["Microsoft Teams Safe Links"],
+    "destination": "https://example.org/doc",
+    "trusted": true
+  },
+  {
+    "name": "Proofpoint v2",
+    "input": "https://urldefense.proofpoint.com/v2/url?u=https-3A__my-2Dsite.example.com_login-3Fa-3D1&d=DwMFaQ&c=abc&r=xyz&m=1&s=2&e=",
+    "services": ["Proofpoint URL Defense (v2)"],
+    "destination": "https://my-site.example.com/login?a=1",
+    "trusted": true
+  },
+  {
+    "name": "Proofpoint v3 with one replaced character",
+    "input": "https://urldefense.com/v3/__https://example.com/a?b=1*c=2__;Jg!!ABCdef!ghiJKL$",
+    "services": ["Proofpoint URL Defense (v3)"],
+    "destination": "https://example.com/a?b=1&c=2",
+    "trusted": true
+  },
+  {
+    "name": "Proofpoint v3 with a run of replaced characters",
+    "input": "https://urldefense.com/v3/__https://example.com/x**Ay__;JiY!!ABCdef$",
+    "services": ["Proofpoint URL Defense (v3)"],
+    "destination": "https://example.com/x&&y",
+    "trusted": true
+  },
+  {
+    "name": "Safe Links wrapping Proofpoint v2 (nested)",
+    "input": "https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.proofpoint.com%2Fv2%2Furl%3Fu%3Dhttps-3A__paypa1.com_signin%26d%3DDwM&data=x",
+    "services": ["Microsoft Defender Safe Links", "Proofpoint URL Defense (v2)"],
+    "destination": "https://paypa1.com/signin",
+    "trusted": true
+  },
+  {
+    "name": "FortiMail click protection (customer-hosted, not verifiable)",
+    "input": "https://fortimail.corp.example/fmlurlsvc/?fewReq=:B:JVY4NDw7Pjo&url=https%3a%2f%2fsbi-kyc-update.in%2fverify&k=abc",
+    "services": ["FortiMail URL click protection"],
+    "destination": "https://sbi-kyc-update.in/verify",
+    "trusted": false
+  },
+  {
+    "name": "Mimecast reveals only the domain",
+    "input": "https://protect-eu.mimecast.com/s/AbCdEfGhIjKl?domain=micr0soft-support.com",
+    "services": ["Mimecast URL Protect"],
+    "destination": "https://micr0soft-support.com/",
+    "trusted": true,
+    "opaque": true
+  },
+  {
+    "name": "Mimecast without any destination",
+    "input": "https://url.uk.m.mimecastprotect.com/s/AbCdEfGhIjKl",
+    "services": ["Mimecast URL Protect"],
+    "destination": "https://url.uk.m.mimecastprotect.com/s/AbCdEfGhIjKl",
+    "trusted": true,
+    "opaque": true
+  },
+  {
+    "name": "Barracuda",
+    "input": "https://linkprotect.cudasvc.com/url?a=https%3a%2f%2fexample.net%2finvoice&c=E,1,abc&typo=1",
+    "services": ["Barracuda Link Protection"],
+    "destination": "https://example.net/invoice",
+    "trusted": true
+  },
+  {
+    "name": "Cisco Secure Email",
+    "input": "https://secure-web.cisco.com/1aBcDeFgHiJkLmNoP/https%3A%2F%2Fexample.com%2Freset%3Fid%3D7",
+    "services": ["Cisco Secure Email"],
+    "destination": "https://example.com/reset?id=7",
+    "trusted": true
+  },
+  {
+    "name": "Symantec ClickTime",
+    "input": "https://clicktime.symantec.com/15tSv7GzqZ2iRjkPZrKYL?h=abc&u=https%3A%2F%2Fexample.com%2Fpay",
+    "services": ["Symantec Click-time URL Protection"],
+    "destination": "https://example.com/pay",
+    "trusted": true
+  },
+  {
+    "name": "Trend Micro",
+    "input": "https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=https%3a%2f%2fexample.com%2fdoc&umid=1234&auth=abc",
+    "services": ["Trend Micro Click-time Protection"],
+    "destination": "https://example.com/doc",
+    "trusted": true
+  },
+  {
+    "name": "Sophos (base64 destination)",
+    "input": "https://eu-central-1.protection.sophos.com/?d=example.com&u=aHR0cHM6Ly9leGFtcGxlLmNvbS9sb2dpbg==&i=abc&t=def",
+    "services": ["Sophos Email Time-of-Click"],
+    "destination": "https://example.com/login",
+    "trusted": true
+  },
+  {
+    "name": "Check Point Harmony (Avanan)",
+    "input": "https://url.avanan.click/v2/___https://example.com/share___.YXAzOmNvbXBhbnk6YTpvOjEyMzQ1Ng",
+    "services": ["Check Point Harmony Email (Avanan)"],
+    "destination": "https://example.com/share",
+    "trusted": true
+  },
+  {
+    "name": "Amazon SES click tracking",
+    "input": "https://abcdefgh.r.us-east-1.awstrack.me/L0/https:%2F%2Fwww.amaz0n-billing.com%2Faccount/1/0100018f-0000-0000-0000-000000000000-000000/AbCd=123",
+    "services": ["Amazon SES click tracking"],
+    "destination": "https://www.amaz0n-billing.com/account",
+    "trusted": true
+  },
+  {
+    "name": "Google redirect",
+    "input": "https://www.google.com/url?q=https://example.com/page&sa=D&source=editors",
+    "services": ["Google redirect"],
+    "destination": "https://example.com/page",
+    "trusted": true
+  },
+  {
+    "name": "Facebook link shim",
+    "input": "https://l.facebook.com/l.php?u=https%3A%2F%2Fexample.com%2F&h=AT0abc",
+    "services": ["Facebook link shim"],
+    "destination": "https://example.com/",
+    "trusted": true
+  },
+  {
+    "name": "Slack redirect",
+    "input": "https://slack-redir.net/link?url=https%3A%2F%2Fexample.com%2Fx",
+    "services": ["Slack redirect"],
+    "destination": "https://example.com/x",
+    "trusted": true
+  },
+  {
+    "name": "YouTube redirect",
+    "input": "https://www.youtube.com/redirect?event=video_description&q=https%3A%2F%2Fexample.com%2F",
+    "services": ["YouTube redirect"],
+    "destination": "https://example.com/",
+    "trusted": true
+  },
+  {
+    "name": "LinkedIn safety redirect",
+    "input": "https://www.linkedin.com/safety/go?url=https%3A%2F%2Fexample.com%2Fjob&trk=flagship",
+    "services": ["LinkedIn redirect"],
+    "destination": "https://example.com/job",
+    "trusted": true
+  },
+  {
+    "name": "Steam link filter",
+    "input": "https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fsteamcommunlty.com%2Ftrade",
+    "services": ["Steam link filter"],
+    "destination": "https://steamcommunlty.com/trade",
+    "trusted": true
+  },
+  {
+    "name": "SendGrid hides the destination",
+    "input": "https://u1234567.ct.sendgrid.net/ls/click?upn=abc123",
+    "services": ["SendGrid click tracking"],
+    "destination": "https://u1234567.ct.sendgrid.net/ls/click?upn=abc123",
+    "trusted": true,
+    "opaque": true
+  },
+  {
+    "name": "Fake Safe Links host is not a wrapper",
+    "input": "https://nam12.safelinks.protection.outlook.com.evil.example/?url=https%3A%2F%2Fpaypal.com",
+    "services": [],
+    "destination": "https://nam12.safelinks.protection.outlook.com.evil.example/?url=https%3A%2F%2Fpaypal.com",
+    "embedded": "https://paypal.com"
+  },
+  {
+    "name": "Open redirect parameter on an ordinary site",
+    "input": "https://news.example.org/out?url=https%3A%2F%2Fpaypal-secure-login.top%2F",
+    "services": [],
+    "destination": "https://news.example.org/out?url=https%3A%2F%2Fpaypal-secure-login.top%2F",
+    "embedded": "https://paypal-secure-login.top/"
+  },
+  {
+    "name": "Same-site parameter is not an embedded address",
+    "input": "https://accounts.example.com/login?continue=https%3A%2F%2Fmail.example.com%2F",
+    "services": [],
+    "destination": "https://accounts.example.com/login?continue=https%3A%2F%2Fmail.example.com%2F"
+  },
+  {
+    "name": "Plain link",
+    "input": "https://example.com/",
+    "services": [],
+    "destination": "https://example.com/"
+  }
+]

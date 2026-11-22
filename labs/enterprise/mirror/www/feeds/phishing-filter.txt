@@ -1,0 +1,3 @@
+# phishing-filter, as published inside the company
+mirror-listed-phishing-filter.com
+shared-bad-domain-mirror.com

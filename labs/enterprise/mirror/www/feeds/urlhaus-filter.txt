@@ -1,0 +1,3 @@
+# urlhaus-filter, as published inside the company
+mirror-listed-urlhaus-filter.com
+shared-bad-domain-mirror.com

@@ -1,0 +1,13 @@
+{
+  "name": "homograph-guard-browser-test",
+  "private": true,
+  "description": "Test the Homograph Guard extension in the Chrome or Edge installed on this computer.",
+  "type": "module",
+  "scripts": {
+    "edge": "node run.mjs --browser edge",
+    "chrome": "node run.mjs --browser chrome"
+  },
+  "dependencies": {
+    "puppeteer-core": "25.17.0"
+  }
+}

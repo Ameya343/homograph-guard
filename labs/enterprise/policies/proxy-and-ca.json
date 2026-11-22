@@ -1,0 +1,7 @@
+{
+  "proxy": "http://hg-proxy:8080",
+  "cafile": "/ca/corp-root.pem",
+  "dns_mode": "off",
+  "block": ["corp-blocked-example.com"],
+  "allow": ["partner-portal-example.com"]
+}

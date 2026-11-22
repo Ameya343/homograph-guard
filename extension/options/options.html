@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homograph Guard settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header class="top">
+      <img src="../icons/on-48.png" width="32" height="32" alt="">
+      <div>
+        <h1>Homograph Guard</h1>
+        <p class="muted">Your lists and privacy settings. Everything here stays on this device.</p>
+      </div>
+    </header>
+
+    <section class="card" id="status" aria-live="polite">
+      <h2>Protection</h2>
+      <p id="status-text" class="muted">Checking…</p>
+    </section>
+
+    <section class="card">
+      <h2>Privacy</h2>
+      <p class="muted">Links are always checked against the threat database on this device and your own lists. Asking public DNS resolvers adds more evidence but tells them which domains you check.</p>
+      <fieldset id="dns" class="choices">
+        <legend class="sr">Ask DNS resolvers about links</legend>
+        <label><input type="radio" name="dns" value="off"> <span><strong>Never</strong><br><small>Only this device is used. Nothing is sent anywhere.</small></span></label>
+        <label><input type="radio" name="dns" value="suspicious"> <span><strong>Suspicious links only</strong><br><small>Links that already look suspicious are also checked with Google, Cloudflare and AdGuard DNS.</small></span></label>
+        <label><input type="radio" name="dns" value="all"> <span><strong>Every link</strong><br><small>Every link is also checked with Google, Cloudflare and AdGuard DNS.</small></span></label>
+      </fieldset>
+      <p id="dns-locked" class="note" hidden>This setting is managed by your organisation.</p>
+    </section>
+
+    <section class="card">
+      <h2>Your lists</h2>
+      <div class="tabs" role="tablist">
+        <button role="tab" id="tab-allow" aria-controls="panel" aria-selected="true" data-list="allow">Allowlist</button>
+        <button role="tab" id="tab-block" aria-controls="panel" aria-selected="false" data-list="block">Blocklist</button>
+        <button role="tab" id="tab-reported" aria-controls="panel" aria-selected="false" data-list="reported">Reported</button>
+      </div>
+      <div id="panel" role="tabpanel">
+        <p id="list-help" class="muted"></p>
+        <form id="add" class="add">
+          <input id="entry" type="text" autocomplete="off" spellcheck="false" maxlength="2048" required aria-label="Domain or link">
+          <input id="note" type="text" autocomplete="off" maxlength="300" placeholder="Note (optional)" aria-label="Note">
+          <button type="submit" class="primary" id="add-btn">Add</button>
+        </form>
+        <p id="error" class="error" role="alert" hidden></p>
+        <ul id="entries" class="entries"></ul>
+        <p id="empty" class="muted" hidden>Nothing here yet.</p>
+      </div>
+      <div id="org" hidden>
+        <h3>From your organisation</h3>
+        <p class="muted">These entries come from a policy set by your administrator and cannot be changed here.</p>
+        <ul id="org-entries" class="entries"></ul>
+      </div>
+    </section>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

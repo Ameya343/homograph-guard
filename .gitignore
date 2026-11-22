@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+node_modules/
+# reports can contain live indicators - keep them out of the repo
+*.report.json
+homograph-report*.json
+
+# lab output and generated lab certificates
+labs/*/out/
+labs/enterprise/ca/
+labs/enterprise/mirror/tls/
+labs/enterprise/policies/lab-ca.pem
+labs/enterprise/*.log
+compat-shots/
+e2e-shots/
