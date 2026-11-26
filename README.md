@@ -175,20 +175,29 @@ a TLS-inspecting proxy recorded every request the app made; see
 
 | What | Where to get it | For |
 | --- | --- | --- |
-| Windows installer | [Releases](https://github.com/Ameya343/homograph-guard/releases/latest): `HomographGuard-Setup-1.3.0.exe` and `HomographGuard-Setup-1.3.0.exe.sha256` | 64-bit Windows 10 or 11; no Python needed |
-| Python package | `pip install "git+https://github.com/Ameya343/homograph-guard.git"` (needs Git), or without Git `pip install https://github.com/Ameya343/homograph-guard/archive/refs/heads/main.zip`, or the `.whl` file from [Releases](https://github.com/Ameya343/homograph-guard/releases/latest) | Windows, macOS and Linux with Python 3.11 or newer |
+| Windows installer | [`HomographGuard-Setup-1.3.0.exe`](https://github.com/Ameya343/homograph-guard/releases/download/v1.3.0/HomographGuard-Setup-1.3.0.exe) and its checksum [`.sha256`](https://github.com/Ameya343/homograph-guard/releases/download/v1.3.0/HomographGuard-Setup-1.3.0.exe.sha256) (all files and release notes: [Releases](https://github.com/Ameya343/homograph-guard/releases/latest)) | 64-bit Windows 10 or 11; no Python needed |
+| Python package | `pip install "git+https://github.com/Ameya343/homograph-guard.git"` (needs Git), or without Git `pip install https://github.com/Ameya343/homograph-guard/releases/download/v1.3.0/homograph_guard-1.3.0-py3-none-any.whl` (the released [`.whl`](https://github.com/Ameya343/homograph-guard/releases/download/v1.3.0/homograph_guard-1.3.0-py3-none-any.whl), with its [`.sha256`](https://github.com/Ameya343/homograph-guard/releases/download/v1.3.0/homograph_guard-1.3.0-py3-none-any.whl.sha256)) | Windows, macOS and Linux with Python 3.11 or newer |
 | Source code, with the browser extension | `git clone https://github.com/Ameya343/homograph-guard.git`, or **Code → Download ZIP** at the top of this page | the extension without the installer, Docker, building it yourself |
 
-Before running the installer, check that it is the file that was published. The two
-values must be the same:
+Before running the installer, check that it is the file that was published. Every file
+on the Releases page has a matching `.sha256` file, and the two values must be the same.
+
+Windows (PowerShell), in the folder with both files:
 
 ```powershell
-(Get-FileHash .\HomographGuard-Setup-1.3.0.exe -Algorithm SHA256).Hash.ToLower()
-Get-Content .\HomographGuard-Setup-1.3.0.exe.sha256
+$expected = (Get-Content .\HomographGuard-Setup-1.3.0.exe.sha256).Split(' ')[0]
+$actual   = (Get-FileHash .\HomographGuard-Setup-1.3.0.exe -Algorithm SHA256).Hash
+if ($actual -eq $expected) { 'OK: checksum matches' } else { 'MISMATCH: do not run this file' }
+```
+
+Linux and macOS (shown for the wheel; `.sha256` file in the same folder):
+
+```bash
+sha256sum -c homograph_guard-1.3.0-py3-none-any.whl.sha256     # macOS: shasum -a 256 -c ...
 ```
 
 The installer is not code-signed, so the first time Windows SmartScreen may show
-*Windows protected your PC*. Choose **More info → Run anyway** only if the values match.
+*Windows protected your PC*. Choose **More info → Run anyway** only if the checksum matches.
 The browser extension comes with the installer (in its folder) and with the source code
 (the `extension` folder); see [Browser extension](#browser-extension) to add it to your browser.
 
